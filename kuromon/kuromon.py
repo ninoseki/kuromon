@@ -15,6 +15,10 @@ def is_pydantic(obj: Any) -> bool:
     return isinstance(obj, BaseModel)
 
 
+def is_popo(obj: Any) -> bool:
+    return hasattr(obj, "__dict__")
+
+
 def normalize(data: List[Any]) -> List[Dict]:
     normalized: List[Dict] = []
 
@@ -31,6 +35,10 @@ def normalize(data: List[Any]) -> List[Dict]:
 
         if is_dataclass(obj):
             normalized.append(asdict(obj))
+            continue
+
+        if is_popo(obj):
+            normalized.append(vars(obj))
             continue
 
         raise InvalidDataFormatError(f"Kuromon cannot handle {type(obj)}")
