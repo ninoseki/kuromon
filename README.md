@@ -13,6 +13,8 @@ Convert a list of dict, dataclass, Pydantic or POPO objects into a string repres
 
 ```bash
 pip install kuromon
+# or if you want to use Pydantic along with kuromon
+pip install kuromon[pydantic]
 ```
 
 ## Usage
