@@ -1,10 +1,16 @@
 from dataclasses import asdict, is_dataclass
 from typing import Any, Dict, List, cast
 
-from pydantic import BaseModel
 from tabulate import tabulate
 
 from .errors import InvalidDataFormatError
+
+_is_pydantic_installed = True
+
+try:
+    from pydantic import BaseModel
+except ImportError:
+    _is_pydantic_installed = False
 
 
 def is_dict(obj: Any) -> bool:
@@ -12,6 +18,9 @@ def is_dict(obj: Any) -> bool:
 
 
 def is_pydantic(obj: Any) -> bool:
+    if not _is_pydantic_installed:
+        return False
+
     return isinstance(obj, BaseModel)
 
 

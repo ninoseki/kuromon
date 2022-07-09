@@ -294,7 +294,7 @@ name = "pydantic"
 version = "1.9.1"
 description = "Data validation and settings management using python type hints"
 category = "main"
-optional = false
+optional = true
 python-versions = ">=3.6.1"
 
 [package.dependencies]
@@ -487,10 +487,13 @@ python-versions = ">=3.7"
 docs = ["sphinx", "jaraco.packaging (>=9)", "rst.linker (>=1.9)"]
 testing = ["pytest (>=6)", "pytest-checkdocs (>=2.4)", "pytest-flake8", "pytest-cov", "pytest-enabler (>=1.0.1)", "jaraco.itertools", "func-timeout", "pytest-black (>=0.3.7)", "pytest-mypy (>=0.9.1)"]
 
+[extras]
+pydantic = ["pydantic"]
+
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.7"
-content-hash = "e0b9e6898121ba5505405920d693ed02edfa770776a59c322f2d2b00deaa862d"
+content-hash = "ad06e8468e4cf17c35282320244ad49e8a3af885382a9bbe1a09654190b1a06f"
 
 [metadata.files]
 atomicwrites = [
