@@ -1,0 +1,37 @@
+name: Python CI
+
+on: ["pull_request", "push"]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        python-version: [3.7, 3.8, 3.9, "3.10"]
+        poetry-version: [1.1.11]
+
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v2
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Setup poetry
+        uses: abatilo/actions-poetry@v2.0.0
+        with:
+          poetry-version: ${{ matrix.poetry-version }}
+
+      - name: Cache dependencies
+        uses: actions/cache@v2
+        with:
+          path: ~/.cache/pypoetry/virtualenvs
+          key: ${{ runner.os }}-${{ matrix.python-version }}-poetry-${{ matrix.poetry-version }}-${{ hashFiles('poetry.lock') }}
+
+      - name: Install Python dependencies
+        if: steps.cache-deps.outputs.cache-hit != 'true'
+        run: |
+          poetry install
+
+      - name: Run tests
+        run: poetry run pytest
