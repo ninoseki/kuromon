@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "kuromon"
 version = "0.1.0"
-description = "Convert a list of dict, dataclass or Pydantic objects into a string represented table"
+description = "Convert a list of dict, dataclass, Pydantic or POPO objects into a string represented table"
 authors = ["Manabu Niseki <manabu.niseki@gmail.com>"]
 homepage = "https://github.com/ninoseki/kuromon"
 repository = "https://github.com/ninoseki/kuromon"

@@ -3,7 +3,7 @@
 [![PyPI version](https://badge.fury.io/py/kuromon.svg)](https://badge.fury.io/py/kuromon)
 [![Python CI](https://github.com/ninoseki/kuromon/actions/workflows/test.yml/badge.svg)](https://github.com/ninoseki/kuromon/actions/workflows/test.yml)
 
-Convert a list of dict, dataclass or Pydantic objects into a string represented table.
+Convert a list of dict, dataclass, Pydantic or POPO objects into a string represented table.
 
 ## Requirements
 
